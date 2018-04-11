@@ -141,17 +141,14 @@ function GetSingleCustomerAccount(accountNumber) {
         }
     });
 
-
 }
 
-
-
+//clickable row
 function ClickableRow() {
     $(document).ready(function () {
         var table = $('#datatable').DataTable();
-        $('#datatable tbody').on('click', 'tr', function () {
+        $('#datatable tbody').on('click', 'tr td:eq(0)', function () {
             var data = table.row(this).data();
-            alert('You clicked on ' + data.accountNumber + '\'s row');
             $('#transaction').modal('show');
         });
 
