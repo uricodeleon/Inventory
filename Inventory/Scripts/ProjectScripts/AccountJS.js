@@ -104,7 +104,6 @@ function UpdateCustomerAccount() {
 
 }
 
-
 //get single account
 function GetSingleCustomerAccount(accountNumber) {
     var params = {
@@ -140,13 +139,16 @@ function GetSingleCustomerAccount(accountNumber) {
             alert(errormessage);
         }
     });
-
-
 }
 
-
-
-
+function GetAccountInformation(accountNumber) {
+    var params = {
+        accountNumber: accountNumber
+    }
+    $.ajax({
+        
+    });
+}
 
 function ClickableRow() {
     $(document).ready(function () {

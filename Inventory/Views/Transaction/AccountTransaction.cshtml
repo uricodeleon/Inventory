@@ -44,7 +44,6 @@
                                     <div class="col-sm-4"><input class="form-control input-sm" readonly="readonly" /></div>
                                 </div>
 
-
                                 <div class="container-fluid top-buffer2">
                                     <div class="row top-buffer">
                                         <div class="col-sm-2">Item Quantity</div>
@@ -67,8 +66,7 @@
                                         <div class="col-sm-4"><input class="form-control input-sm" placeholder="Sales Unit"/></div>
                                     </div>
                                 </div>
-                               
-
+                              
                             </div>
                         </div>
                     </div>
@@ -79,39 +77,102 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                               
-                        </div>
+
+                               <div class="row">
+                                   <div class="col-sm-2">Item</div>
+                               </div>
+                            
+                               <div class="row top-buffer">
+                                   <div class="col-md-6 col-sm-6 "><input class="form-control input-sm" placeholder="Search..." /></div>
+                                   <div class="col-sm-2">Item Name:</div>
+                                   <div class="col-sm-4"><input class="form-control input-sm" placeholder="Item Name:"/></div>
+                               </div>
+                               <div class="row top-buffer">
+                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                       <select class="select2_single form-control" tabindex="-1">
+                                           <option></option>
+                                           <option value="AK">Alaska</option>
+                                           <option value="HI">Hawaii</option>
+                                           <option value="CA">California</option>
+                                           <option value="NV">Nevada</option>
+                                           <option value="OR">Oregon</option>
+                                           <option value="WA">Washington</option>
+                                           <option value="AZ">Arizona</option>
+                                           <option value="CO">Colorado</option>
+                                           <option value="ID">Idaho</option>
+                                           <option value="MT">Montana</option>
+                                           <option value="NE">Nebraska</option>
+                                           <option value="NM">New Mexico</option>
+                                           <option value="ND">North Dakota</option>
+                                           <option value="UT">Utah</option>
+                                           <option value="WY">Wyoming</option>
+                                           <option value="AR">Arkansas</option>
+                                           <option value="IL">Illinois</option>
+                                           <option value="IA">Iowa</option>
+                                           <option value="KS">Kansas</option>
+                                           <option value="KY">Kentucky</option>
+                                           <option value="LA">Louisiana</option>
+                                           <option value="MN">Minnesota</option>
+                                           <option value="MS">Mississippi</option>
+                                           <option value="MO">Missouri</option>
+                                           <option value="OK">Oklahoma</option>
+                                           <option value="SD">South Dakota</option>
+                                           <option value="TX">Texas</option>
+                                       </select>
+
+                                   </div>
+                                   <div class="col-sm-2">Item Number</div>
+                                   <div class="col-sm-4"><input class="form-control input-sm" placeholder="Item No." /></div>
+                               </div>
+                               <div class="row top-buffer">
+                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                       <select class="select2_multiple form-control" multiple="multiple" size="10">
+                                           <option>Choose option</option>
+                                           <option>Option one</option>
+                                           <option>Option two</option>
+                                           <option>Option three</option>
+                                           <option>Option four</option>
+                                           <option>Option five</option>
+                                           <option>Option six</option>
+                                       </select>
+                                   </div>
+                                   <div class="col-sm-2">Item Price:</div>
+                                   <div class="col-sm-4"><input class="form-control input-sm" placeholder="Price" /></div>
+                               </div>                                                  
+                            </div>
                     </div>
                 </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <div class="clearfix"></div>
+                                </div>
+                                    <div class="x_content">
+                                        <table id="datatable" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Item Quantity</th>
+                                                    <th>Pack Unit</th>
+                                                    <th>Sales Qty.</th>
+                                                    <th>Total Sales</th>
+                                                    <th>Sales unit</th>
+                                                    <th>Item #</th>
+                                                    <th>Item Name</th>
+                                                    <th>Item Price</th>
+                                                    <th>Ammount</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
-               
-                <!--First Row-->
-                @*<div class="row">
-            <div class="col-sm-1 col-sm col-xs-12 form-group">
-                <label>Account Code:</label>
-            </div>
-
-            <div class="col-sm-2 col-sm-12  col-xs-12  form-group ">
-                <input type="text" class="form-control input-sm" />
-            </div>
-
-            <div class="col-sm-1 col-sm-12  col-xs-12 form-group ">
-                <label>Customer Type:</label>
-            </div>
-
-            <div class="col-sm-2 col-sm-12  col-xs-12 form-group">
-                <input type="text" class="form-control input-sm" />
-            </div>
-
-            <div class="col-sm-1 col-sm-12 col-xs-12 form-group">
-                <label>Item Name</label>
-            </div>
-        </div>*@
-
-
-
-       
+ 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
