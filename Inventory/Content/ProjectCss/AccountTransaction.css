@@ -1,0 +1,10 @@
+﻿@media (min-width: 992px) {
+    .modal-lg {
+        width: 1600px;
+        height: 900px; /* control height here */
+    }
+}
+.col-md-2 col-sm-2 col-xs-6{
+
+  height:50px;
+}
