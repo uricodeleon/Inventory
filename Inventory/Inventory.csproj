@@ -200,6 +200,7 @@
     <Content Include="Content\docs.min.css" />
     <Content Include="Content\jquery-jvectormap-2.0.3.css" />
     <Content Include="Content\ProjectCss\AccountTransaction.css" />
+    <Content Include="Content\ProjectCss\ViewInventory.css" />
     <Content Include="Content\shCoreDefault.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\css\font-awesome.css" />
@@ -1072,6 +1073,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment\moment.min.js" />
     <Content Include="Scripts\ProjectScripts\AccountJS.js" />
+    <Content Include="Scripts\ProjectScripts\AccountTransaction.js" />
     <Content Include="Scripts\ProjectScripts\InventoryJS.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

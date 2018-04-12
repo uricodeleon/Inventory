@@ -133,22 +133,21 @@ function GetSingleCustomerAccount(accountNumber) {
             $('#terms').val(data.terms);
             $('#contactNumber').val(data.contactNumber);
             $('#editModal').modal('show');
-
         },
         error: function (errormessage) {
             alert(errormessage);
         }
     });
 }
-
-function GetAccountInformation(accountNumber) {
-    var params = {
-        accountNumber: accountNumber
-    }
-    $.ajax({
+//last code 
+//function GetAccountInformation(accountNumber) {
+//    var params = {
+//        accountNumber: accountNumber
+//    }
+//    $.ajax({
         
-    });
-}
+//    });
+//}
 
 function ClickableRow() {
     $(document).ready(function () {
@@ -156,10 +155,39 @@ function ClickableRow() {
         $('#datatable tbody').on('click', 'tr', function () {
             var data = table.row(this).data();
             alert('You clicked on ' + data.accountNumber + '\'s row');
-            $('#transaction').modal('show');
+            //$('#transaction').modal('show');
+            GetSingleAccountForTransaction(data.accountNumber);
         });
 
     });
+}
+
+
+//display for account transaction modal
+function GetSingleAccountForTransaction(accountNumber) {
+    var params = {
+        accountNumber: accountNumber
+    };
+    $.ajax({
+        url: "/Account/GetSingleCustomerAccount",
+        type: "GET",
+        contentType: "application/json;charset=UTF-8",
+        dataType: "JSON",
+        data: { "accountNumber": accountNumber },
+        success: function (data) {
+            $('#transactionAccountCode').val(data.accountCode);
+            $('#transactionCustomerType').val(data.customerType);
+            $('#transactionCustomerName').val(data.firstName + ' ' + data.lastName);
+            $('#transactionAddress').val(data.address);
+            $('#transactionContactNumber').val(data.contactNumber);
+
+            $('#transaction').modal('show');
+        },
+        error: function (errorMessage) {
+            alert(errorMessage)
+        }
+    })
+
 }
 
 //get all account records and dispaly to datatables.

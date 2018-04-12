@@ -1,0 +1,18 @@
+﻿@media (min-width: 992px) {
+    .modal-lg {
+        width: 1000px;
+        height: 1200px; /* control height here */
+    }
+}
+
+.col-md-2 col-sm-2 col-xs-6 {
+    height: 50px;
+}
+/*Space Between two class rows*/
+.top-buffer {
+    margin-top: 5px;
+}
+
+.top-buffer2 {
+    margin-top: 10px;
+}
