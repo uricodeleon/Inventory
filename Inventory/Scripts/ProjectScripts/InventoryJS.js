@@ -1,17 +1,13 @@
 ﻿$(document).ready(function () {
     GetListOfCategory();
- 
+    PopoulateCategoryList();
 });
-
-
-
 
 
 //add new cateogry item
 function AddItemCategory() {
 
     var itemCategory = $('#itmCategoryField').val();
-
     var Category = {
         itemCategory : itemCategory
     };
@@ -59,4 +55,21 @@ function GetListOfCategory() {
 
         });
     });
+}
+
+function PopoulateCategoryList() {
+    $.ajax({
+        type: "GET",
+        url: "/Inventory/GetCategoryToSelect",
+        contentType: "application/json;charset=UTF-8",
+        dataType: "json",
+        success: function (data) {
+            $.each(data, function (i, value) {
+                alert(value);
+                $('#categorySelect').append(value)
+            });
+
+        }
+    })
+
 }
