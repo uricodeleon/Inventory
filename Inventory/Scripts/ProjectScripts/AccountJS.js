@@ -184,9 +184,9 @@ function GetSingleAccountForTransaction(accountNumber) {
             $('#transaction').modal('show');
         },
         error: function (errorMessage) {
-            alert(errorMessage)
+            alert(errorMessage);
         }
-    })
+    });
 
 }
 

@@ -29,6 +29,8 @@ namespace Inventory.Models
     
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Inventory> Inventory { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Transaction> Transaction { get; set; }
     
         public virtual ObjectResult<string> GenerateCCAnumbers()
         {

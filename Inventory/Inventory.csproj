@@ -159,6 +159,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>ELFILO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Customer.cs">
       <DependentUpon>ELFILO.tt</DependentUpon>
     </Compile>
@@ -178,6 +181,9 @@
       <DependentUpon>ELFILO.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Inventory.cs">
+      <DependentUpon>ELFILO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Transaction.cs">
       <DependentUpon>ELFILO.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
