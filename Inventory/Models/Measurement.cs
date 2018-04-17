@@ -12,18 +12,9 @@ namespace Inventory.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Transaction
+    public partial class Measurement
     {
         public int id { get; set; }
-        public string accountNumber { get; set; }
-        public string itemCode { get; set; }
-        public string itemName { get; set; }
-        public string itemQuantity { get; set; }
-        public Nullable<decimal> itemPrice { get; set; }
-        public string packUnit { get; set; }
-        public string salesQty { get; set; }
-        public string salesUnit { get; set; }
-        public string totalSales { get; set; }
-        public Nullable<decimal> ammount { get; set; }
+        public string itemMeasurement { get; set; }
     }
 }

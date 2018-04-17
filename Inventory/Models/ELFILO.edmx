@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ELFILOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ELFILOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="id" />
@@ -41,6 +41,13 @@
           <Property Name="itemSupplier" Type="nvarchar(max)" />
           <Property Name="date_added" Type="datetime" />
         </EntityType>
+        <EntityType Name="Measurement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemMeasurement" Type="varchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Transaction">
           <Key>
             <PropertyRef Name="id" />
@@ -48,25 +55,34 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="accountNumber" Type="nvarchar(max)" Nullable="false" />
           <Property Name="itemCode" Type="nvarchar(max)" />
-          <Property Name="itemName" Type="varbinary(max)" />
+          <Property Name="itemName" Type="nvarchar" MaxLength="50" />
+          <Property Name="itemQuantity" Type="nvarchar" MaxLength="50" />
           <Property Name="itemPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="packUnit" Type="nvarchar" MaxLength="50" />
           <Property Name="salesQty" Type="nvarchar(max)" />
           <Property Name="salesUnit" Type="nvarchar(max)" />
           <Property Name="totalSales" Type="nvarchar(max)" />
-          <Property Name="ammount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ammount" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
-        <Function Name="GenerateCCAnumbers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ELFILOModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Measurement" EntityType="Self.Measurement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ELFILOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="id" />
@@ -82,13 +98,6 @@
           <Property Name="accountNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="customerType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="ELFILOEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Customer" EntityType="Self.Customer" />
-          <EntitySet Name="Inventory" EntityType="ELFILOModel.Inventory" />
-          <FunctionImport Name="GenerateCCAnumbers" ReturnType="Collection(String)" />
-          <EntitySet Name="Category" EntityType="ELFILOModel.Category" />
-          <EntitySet Name="Transaction" EntityType="ELFILOModel.Transaction" />
-        </EntityContainer>
         <EntityType Name="Inventory">
           <Key>
             <PropertyRef Name="id" />
@@ -103,39 +112,53 @@
           <Property Name="itemSupplier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="date_added" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Category">
+        <EntityType Name="Measurement">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="itemCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="itemMeasurement" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="accountNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="accountNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="itemCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="itemName" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="itemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="itemQuantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="itemPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="packUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="salesQty" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="salesUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="totalSales" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ammount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ammount" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
+        <EntityContainer Name="ELFILOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" />
+          <EntitySet Name="Measurement" EntityType="Self.Measurement" />
+          <EntitySet Name="Transaction" EntityType="Self.Transaction" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ELFILOModelStoreContainer" CdmEntityContainer="ELFILOEntities">
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="ELFILOModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="itemCategory" ColumnName="itemCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Customer">
             <EntityTypeMapping TypeName="ELFILOModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="customerType" ColumnName="customerType" />
-                <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="accountCode" ColumnName="accountCode" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
@@ -144,46 +167,48 @@
                 <ScalarProperty Name="terms" ColumnName="terms" />
                 <ScalarProperty Name="contactNumber" ColumnName="contactNumber" />
                 <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+                <ScalarProperty Name="customerType" ColumnName="customerType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Inventory">
             <EntityTypeMapping TypeName="ELFILOModel.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
-                <ScalarProperty Name="date_added" ColumnName="date_added" />
-                <ScalarProperty Name="itemSupplier" ColumnName="itemSupplier" />
-                <ScalarProperty Name="itemPrice" ColumnName="itemPrice" />
-                <ScalarProperty Name="itemQuantity" ColumnName="itemQuantity" />
-                <ScalarProperty Name="itemCode" ColumnName="itemCode" />
-                <ScalarProperty Name="itemName" ColumnName="itemName" />
-                <ScalarProperty Name="itemMeasurement" ColumnName="itemMeasurement" />
-                <ScalarProperty Name="itemCategory" ColumnName="itemCategory" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="itemCategory" ColumnName="itemCategory" />
+                <ScalarProperty Name="itemMeasurement" ColumnName="itemMeasurement" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
+                <ScalarProperty Name="itemCode" ColumnName="itemCode" />
+                <ScalarProperty Name="itemQuantity" ColumnName="itemQuantity" />
+                <ScalarProperty Name="itemPrice" ColumnName="itemPrice" />
+                <ScalarProperty Name="itemSupplier" ColumnName="itemSupplier" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GenerateCCAnumbers" FunctionName="ELFILOModel.Store.GenerateCCAnumbers" />
-          <EntitySetMapping Name="Category">
-            <EntityTypeMapping TypeName="ELFILOModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="itemCategory" ColumnName="itemCategory" />
+          <EntitySetMapping Name="Measurement">
+            <EntityTypeMapping TypeName="ELFILOModel.Measurement">
+              <MappingFragment StoreEntitySet="Measurement">
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="itemMeasurement" ColumnName="itemMeasurement" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Transaction">
             <EntityTypeMapping TypeName="ELFILOModel.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
-                <ScalarProperty Name="ammount" ColumnName="ammount" />
-                <ScalarProperty Name="totalSales" ColumnName="totalSales" />
-                <ScalarProperty Name="salesUnit" ColumnName="salesUnit" />
-                <ScalarProperty Name="salesQty" ColumnName="salesQty" />
-                <ScalarProperty Name="packUnit" ColumnName="packUnit" />
-                <ScalarProperty Name="itemPrice" ColumnName="itemPrice" />
-                <ScalarProperty Name="itemName" ColumnName="itemName" />
-                <ScalarProperty Name="itemCode" ColumnName="itemCode" />
-                <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+                <ScalarProperty Name="itemCode" ColumnName="itemCode" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
+                <ScalarProperty Name="itemQuantity" ColumnName="itemQuantity" />
+                <ScalarProperty Name="itemPrice" ColumnName="itemPrice" />
+                <ScalarProperty Name="packUnit" ColumnName="packUnit" />
+                <ScalarProperty Name="salesQty" ColumnName="salesQty" />
+                <ScalarProperty Name="salesUnit" ColumnName="salesUnit" />
+                <ScalarProperty Name="totalSales" ColumnName="totalSales" />
+                <ScalarProperty Name="ammount" ColumnName="ammount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

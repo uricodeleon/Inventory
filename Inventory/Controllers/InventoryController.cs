@@ -19,7 +19,7 @@ namespace Inventory.Controllers
         /// </summary>
         /// <param name="inventory"></param>
         /// <returns></returns>
-        public string AddItem(Models.Inventory inventory)
+        public string AddIventoryItem(Models.Inventory inventory)
         {
             //check if its not null
             if (inventory != null)
@@ -47,10 +47,9 @@ namespace Inventory.Controllers
             using (ELFILOEntities _entities = new ELFILOEntities())
             {
                 List<Models.Inventory> _cusomter = _entities.Inventory.ToList();
-                return Json(_cusomter, JsonRequestBehavior.AllowGet);
+                return Json(new { data = _cusomter }, JsonRequestBehavior.AllowGet);
             }
         }
-
 
         /// <summary>
         /// Add New Cagories
@@ -86,6 +85,7 @@ namespace Inventory.Controllers
                 return Json( new { data = categories}, JsonRequestBehavior.AllowGet);
             }
         }
+
         /// <summary>
         /// Get all the list of category
         /// pop
@@ -98,6 +98,19 @@ namespace Inventory.Controllers
                 var categories = _entities.Category.Select(x => x.itemCategory).ToList();
                 return Json(new { data = categories }, JsonRequestBehavior.AllowGet); 
             }
-        }           
+        }
+        
+        /// <summary>
+        /// Get All List of Measurement
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult GetListOfMeasurement()
+        {
+            using (ELFILOEntities _entities = new ELFILOEntities())
+            {
+                var measurement = _entities.Measurement.ToList();
+                return Json(new { data = measurement }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

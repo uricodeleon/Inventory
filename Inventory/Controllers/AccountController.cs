@@ -125,14 +125,12 @@ namespace Inventory.Controllers
         /// <param name="accountNumber"></param>
         /// <returns></returns>
         public JsonResult GetSingleCustomerAccount(string accountNumber)
-        {
-     
+        {    
                 using (ELFILOEntities _entites = new ELFILOEntities())
                 {
                     var _result = _entites.Customer.Where(x => x.accountNumber == accountNumber).FirstOrDefault();
                     return Json(_result, JsonRequestBehavior.AllowGet);
-                }
-            
+                }            
         }
 
 

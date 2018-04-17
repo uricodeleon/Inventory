@@ -12,8 +12,6 @@ namespace Inventory.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
     public partial class ELFILOEntities : DbContext
     {
@@ -27,14 +25,10 @@ namespace Inventory.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Inventory> Inventory { get; set; }
-        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Measurement> Measurement { get; set; }
         public virtual DbSet<Transaction> Transaction { get; set; }
-    
-        public virtual ObjectResult<string> GenerateCCAnumbers()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GenerateCCAnumbers");
-        }
     }
 }

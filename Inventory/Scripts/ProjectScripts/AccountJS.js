@@ -155,8 +155,9 @@ function ClickableRow() {
         $('#datatable tbody').on('click', 'tr', function () {
             var data = table.row(this).data();
             alert('You clicked on ' + data.accountNumber + '\'s row');
-            //$('#transaction').modal('show');
             GetSingleAccountForTransaction(data.accountNumber);
+            $('#accountNumberHolder').val(data.accountNumber);
+            TransactionDetails(data.accountNumber);
         });
 
     });
@@ -180,7 +181,7 @@ function GetSingleAccountForTransaction(accountNumber) {
             $('#transactionCustomerName').val(data.firstName + ' ' + data.lastName);
             $('#transactionAddress').val(data.address);
             $('#transactionContactNumber').val(data.contactNumber);
-
+            m_accountNumber = data.accountNumber;
             $('#transaction').modal('show');
         },
         error: function (errorMessage) {

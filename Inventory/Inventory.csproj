@@ -183,6 +183,9 @@
     <Compile Include="Models\Inventory.cs">
       <DependentUpon>ELFILO.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Measurement.cs">
+      <DependentUpon>ELFILO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Transaction.cs">
       <DependentUpon>ELFILO.tt</DependentUpon>
     </Compile>
